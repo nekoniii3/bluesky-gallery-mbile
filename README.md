@@ -16,6 +16,7 @@ https://bluesky-media-gallery.vercel.app
 
 ※PC版はソースを公開していません<br>
 ※データを取得するAPIは別です（Pythonで製作）
+https://github.com/nekoniii3/bluesky-media-api
 
 <br>
 
@@ -71,7 +72,7 @@ bun dev
 ```
 <br>
 
-## 留意事項
+## 免責など
 これはVercel社のAIサービス[「v0」](https://v0.app)を利用して作られています。コードに冗長な点があることをご了承ください。
 
 <br>
