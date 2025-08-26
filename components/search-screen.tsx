@@ -11,7 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import title from "@/app/title_mb.png"
 import { requestTrend } from "@/lib/request"
 
-export function SearchScreen() {
+export default function SearchScreen() {
   const [keyword, setKeyword] = useState("")
   const [showNoResults, setShowNoResults] = useState(false)
   const [lastSearchedKeyword, setLastSearchedKeyword] = useState("")

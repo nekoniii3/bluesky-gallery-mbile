@@ -15,7 +15,7 @@ https://bluesky-media-gallery.vercel.app
 
 
 ※PC版はソースを公開していません<br>
-※データを取得するAPIは別です（Pythonで製作）
+※データを取得するAPIは別です（Pythonで製作）<br>
 https://github.com/nekoniii3/bluesky-media-api
 
 <br>
@@ -70,10 +70,16 @@ pnpm dev
 # または
 bun dev
 ```
+
 <br>
 
-## 免責など
-これはVercel社のAIサービス[「v0」](https://v0.app)を利用して作られています。コードに冗長な点があることをご了承ください。
+※APIサーバの情報は"\constants\server.ts"に設定して下さい
+
+<br>
+
+## 注意・免責
+- これはVercel社のAIサービス[「v0」](https://v0.app)を利用して作られています。コードに冗長な点があることをご了承ください。
+- トップのトレンドは別のプログラムによりtrendingjapan.bsky.socialから取得しています。そちらの更新が途絶える可能性があることをご了承下さい。
 
 <br>
 
@@ -85,7 +91,7 @@ bun dev
 
 ## 更新履歴
 
-- 2025/8/20  v1.0.0 - 初回リリース
+- 2025/8/26  v1.0.0 - 初回リリース
 
 <br>
 
