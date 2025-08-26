@@ -8,7 +8,7 @@ Blueskyの画像をスワイプして閲覧できるスマホ向けWebアプリ�
 <br>
 
 Vercelで稼働しています。 ※PCで開くとPC版が表示されます<br>
-https://bluesky-media-gallery.vercel.app
+<a href="https://bluesky-media-gallery.vercel.app" target="_blank" rel="noopener noreferrer">https://bluesky-media-gallery.vercel.app</a>
 
 
 
