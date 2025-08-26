@@ -1,99 +1,97 @@
 # Bluesky Gallery Mobile
 
-→in Japanese
+[→日本語](./docs/README_JP.md)
 
-Blueskyの画像をスワイプして閲覧できるスマホ向けWebアプリです。
+A mobile web app for browsing Bluesky images with swipe functionality.
 <br>
 
 <img src="./docs/sample.gif" width="30%">
 
 <br>
 
-Vercelで稼働しています。 ※PCで開くとPC版が表示されます<br>
+Running on Vercel. ※PC version will be displayed when opened on PC<br>
 https://bluesky-media-gallery.vercel.app
 
 
 
-※PC版はソースを公開していません<br>
-※データを取得するAPIは別です（Pythonで製作）<br>
+※PC version source code is not publicly available<br>
+※API for data retrieval is separate (built with Python)<br>
 https://github.com/nekoniii3/bluesky-media-api
 
 <br>
 
-## 概要
+## Overview
 
-Blueskyに投稿された画像の検索ができます。（検索はポストの内容からの検索で画像の情報からの検索をしているわけではありません。）画像は投稿日が新しい順に表示されます。
-
-<br>
-
-## 技術スタック
-
-- **フレームワーク**: Next.js
-- **言語**: TypeScript
-- **スタイリング**: Tailwind CSS
-- **その他**: Swiper, shadcn/ui, 
+You can search for images posted on Bluesky. (Search is based on post content, not image information.) Images are displayed in chronological order with newest posts first.
 
 <br>
 
-## 必要な環境
+## Tech Stack
 
-- Node.js (18.0.0以上)
+- **Framework**: Next.js
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Others**: Swiper, shadcn/ui
+
+<br>
+
+## Requirements
+
+- Node.js (18.0.0 or higher)
 - npm / yarn / pnpm / bun
 
 <br>
 
-## インストールと起動
+## Installation and Setup
 
-1. リポジトリをクローン
+1. Clone the repository
 ```bash
 git clone https://github.com/nekoniii3/bs-gallery-mbile.git
 cd bs-gallery-mbile
 ```
 
-2. 依存関係をインストール
+2. Install dependencies
 ```bash
 npm install
-# または
+# or
 yarn install
-# または
+# or
 pnpm install
 ```
 
-
-4. 開発サーバーを起動
+4. Start the development server
 ```bash
 npm run dev
-# または
+# or
 yarn dev
-# または
+# or
 pnpm dev
-# または
+# or
 bun dev
 ```
 
 <br>
 
-※APIサーバの情報は"\constants\server.ts"に設定して下さい
+※Please configure API server information in "\constants\server.ts"
 
 <br>
 
-## 注意・免責
-- これはVercel社のAIサービス[「v0」](https://v0.app)を利用して作られています。コードに冗長な点があることをご了承ください。
-- トップのトレンドは別のプログラムによりtrendingjapan.bsky.socialから取得しています。そちらの更新が途絶える可能性があることをご了承下さい。
+## Notice & Disclaimer
+- This was created using Vercel's AI service ["v0"](https://v0.app). Please note that the code may contain redundant parts.
+- Top trends are retrieved from trendingjapan.bsky.social by a separate program. Please note that this program may stop functioning.
 
 <br>
 
-## その他
+## Other Information
 
-利用方法や問題点などについては[note](https://note.com/nekoniii3/n/n1c337bec8e61)もご参照下さい。
+For usage instructions and troubleshooting, please also refer to [note](https://note.com/nekoniii3/n/n1c337bec8e61).
 
 <br>
 
-## 更新履歴
+## Update History
 
-- 2025/8/26  v1.0.0 - 初回リリース
+- 2025/8/26  v1.0.0 - Initial release
 
 <br>
 
 ---
-
