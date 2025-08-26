@@ -1,7 +1,5 @@
 # Bluesky Gallery Mobile
 
-→in Japanese
-
 Blueskyの画像をスワイプして閲覧できるスマホ向けWebアプリです。
 <br>
 

@@ -31,7 +31,7 @@ You can search for images posted on Bluesky. (Search is based on post content, n
 - **Framework**: Next.js
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Others**: Swiper, shadcn/ui
+- **Others**: Swiper, shadcn/ui ...
 
 <br>
 
