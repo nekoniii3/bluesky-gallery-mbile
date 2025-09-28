@@ -143,13 +143,19 @@ export default function SearchScreen() {
       <div className="flex items-center justify-center space-x-4 mt-20">
         {/* noteリンク */}
         <div className="h-8 w-8 bg-white rounded">
-          <img src="/note-icon.png" />
+          <a
+            href="https://note.com/nekoniii3/n/n1c337bec8e61"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/note-icon.png" />
+          </a>
         </div>
         {/* 区切り線 */}
         <div className="h-4 w-px bg-gray-300"></div>
         {/* Blueskyリンク */}
         <a
-          href="https://bsky.app/profile/nekonii3info.bsky.social"
+          href="https://bsky.app/profile/nekonii3info.bsky.social/post/3lxbscdvvf22o"
           target="_blank"
           rel="noopener noreferrer"
           className="text-gray-500 hover:text-blue-600 transition-colors duration-200 flex items-center space-x-2 group"
@@ -160,7 +166,13 @@ export default function SearchScreen() {
         </a>
       </div>
       <div className="flex items-center justify-center my-4">
-        <span className="text-sm">source is here</span>
+        <a
+          href="https://github.com/nekoniii3/bluesky-gallery-mbile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="text-sm underline">source is here</span>
+        </a>
       </div>
       {/* 検索結果なしポップアップ */}
       <NoResultsPopup show={showNoResults} keyword={lastSearchedKeyword} />
