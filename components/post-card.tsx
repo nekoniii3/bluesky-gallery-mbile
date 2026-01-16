@@ -61,7 +61,7 @@ export function PostCard({ post, imageHeight }: PostCardProps) {
             <img src={post.image_url} alt={post.image_url} className={cn("object-cover", judgeSize(imageHeight))}/>
             <div className="flex items-center p-3">
                 <a href={"https://bsky.app/profile/" + post.author.handle} target="_blank">
-                  <UserInfo username={post.author.display_name.substring(0,14)} avatar={post.author.avatar} />
+                  <UserInfo username={post.author.displayName.substring(0,14)} avatar={post.author.avatar} />
                 </a>
               <div className="ml-auto text-pink-500 hover:text-pink-600 transition-colors mr-0.5 mt-0.5">
                 <HeartIcon className="w-5"/>
