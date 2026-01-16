@@ -18,6 +18,7 @@ export default function ResultsPage() {
   const [nextCursor, setNextCursor] = useState("0")
   const searchParams = useSearchParams()
   const keyword = searchParams.get("q") || ""
+  const actor = searchParams.get("actor") || ""
   const showSensitive = (searchParams.get("sensitive") || "true").toLowerCase() === "true"
   const retry = (searchParams.get("retry") || "true").toLowerCase() === "true"
   const router = useRouter()
@@ -34,7 +35,7 @@ export default function ResultsPage() {
     setIsLoading(true)
 
     try {
-      const result = await requestData(keyword, nextCursor, "latest", showSensitive)
+      const result = await requestData(keyword, actor, nextCursor, "latest", showSensitive)
 
       // 検索結果が0件の場合は検索画面に戻る
       if (result.posts.length === 0 && pageToFetch === 1) {

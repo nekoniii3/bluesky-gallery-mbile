@@ -80,7 +80,7 @@ export default function SearchScreen() {
     if (!searchTerm.trim()) return
 
     // 検索結果ページに遷移
-    router.push(`/results?q=${encodeURIComponent(searchTerm)}&sensitive=${encodeURIComponent(showSensitive)}&retry=${encodeURIComponent(isRetry)}`)
+    router.push(`/results?q=${encodeURIComponent(searchTerm)}&actor=${encodeURIComponent(selectedUser?.handle || "")}&sensitive=${encodeURIComponent(showSensitive)}&retry=${encodeURIComponent(isRetry)}`)
   }
 
   return (
