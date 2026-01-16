@@ -75,7 +75,7 @@ export default function ResultsPage() {
   // 初回ロード中は全画面ローディングを表示
   if (isLoading && !initialLoadComplete) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen background-mobile">
         <div className="text-center">
           <div className="w-32 h-32 mx-auto relative">
             {/* 外側のリング */}
@@ -101,7 +101,7 @@ export default function ResultsPage() {
   }
 
   return (
-    <main className="flex min-h-screen justify-center items-center">
+    <main className="flex min-h-screen justify-center items-center background-mobile">
       <div className="pt-3 h-screen px-3">
         <ImageSwiper
           medias={media}

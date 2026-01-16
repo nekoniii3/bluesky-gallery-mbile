@@ -1,6 +1,6 @@
 export type AuthorData = {
   handle: string
-  display_name: string
+  displayName: string
   avatar: string
 }
 

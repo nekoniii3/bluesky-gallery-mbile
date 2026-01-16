@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { Search, Sparkles, Clock, ArrowRight } from "lucide-react"
+import { Search, Sparkles, X, ArrowRight } from "lucide-react"
 import { SiBluesky } from "react-icons/si"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,6 +10,9 @@ import { NoResultsPopup } from "@/components/no-results-popup"
 import { Checkbox } from "@/components/ui/checkbox"
 import title from "@/app/title_mb.png"
 import { requestTrend } from "@/lib/request"
+import { UserSearchDialog } from "@/components/user-search-dialog"
+import type { AuthorData } from "@/types/post"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function SearchScreen() {
   const [keyword, setKeyword] = useState("")
@@ -20,6 +23,8 @@ export default function SearchScreen() {
   const [showSensitive, setShowSensitive] = useState(true)
   const [trendList, setTrendList] = useState<string[]>([])
   const [isRetry, setIsRetry] = useState(false)
+  const [userDialogOpen, setUserDialogOpen] = useState(false)
+  const [selectedUser, setSelectedUser] = useState<AuthorData| null>(null)
   
   const getTrend = async() => {
 
@@ -102,6 +107,29 @@ export default function SearchScreen() {
             </Button>
           )}
         </div>
+        {!selectedUser ? (
+        <div className="flex justify-center space-x-2">
+          <Button type="button" variant="secondary" onClick={() => setUserDialogOpen(true)} className="text-xs bg-cyan-200 my-2">
+            ユーザー検索
+          </Button>
+        </div>
+        ) : (
+          <div className="relative max-w-md mx-auto gap-3 rounded-lg border border-border bg-muted/50 p-3 mt-4">
+            <div className="flex justify-center items-center gap-4">
+            <Avatar className="h-8 w-8">
+              <AvatarImage src={selectedUser.avatar || "/placeholder.svg"} alt={selectedUser.handle} />
+              <AvatarFallback>{selectedUser.handle}</AvatarFallback>
+            </Avatar>
+            <div className="flex-1">
+              <p className="text-sm font-medium text-foreground">{selectedUser.handle}</p>
+              <p className="text-xs text-muted-foreground">{selectedUser.handle}</p>
+            </div>
+            <Button variant="ghost" size="sm" onClick={() => setSelectedUser(null)} className="h-8 w-8 p-0">
+              <X className="h-4 w-4" />
+            </Button>
+            </div>
+          </div>
+        )}
         <div className="max-w-md mx-auto mt-4 flex justify-center">
           <div className="flex items-center space-x-2">
             <Checkbox
@@ -176,6 +204,13 @@ export default function SearchScreen() {
       </div>
       {/* 検索結果なしポップアップ */}
       <NoResultsPopup show={showNoResults} keyword={lastSearchedKeyword} />
+      {/* ユーザー検索ダイアログ */}
+      <UserSearchDialog
+        open={userDialogOpen}
+        onOpenChange={setUserDialogOpen}
+        // onUserSelect={setSelectedUser}
+        onSelectUser={setSelectedUser}
+      />
     </div>
   )
 }
