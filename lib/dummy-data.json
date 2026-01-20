@@ -1,5 +1,5 @@
 {
-  "media_data": 
+  "mediaData": 
     {
       "author": {
         "did": "did:plc:5ysft3tkkncrn3xohxwqybxl",
@@ -9,9 +9,9 @@
       },
       "url": "",
       "text": "　",
-      "image_url": "/dummy-back.jpg",
+      "imageUrl": "/dummy-back.jpg",
       "uri": "dummy",
-      "post_url": "https://bsky.app/profile/did:plc:5ysft3tkkncrn3xohxwqybxl/post/3ljahkvm7cc2h",
+      "postUrl": "https://bsky.app/profile/did:plc:5ysft3tkkncrn3xohxwqybxl/post/3ljahkvm7cc2h",
       "likes": 0,
       "date": "2025-02-28T12:59:54Z"
     }

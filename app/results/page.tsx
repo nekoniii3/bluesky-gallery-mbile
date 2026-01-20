@@ -51,7 +51,7 @@ export default function ResultsPage() {
       setMediasNumber(mediaDatas.length)
 
       // まだ画像がある場合、読み込み中のダミーを挿入
-      hasMore && mediaDatas.push(DummyData.media_data)
+      hasMore && mediaDatas.push(DummyData.mediaData)
 
       setMedia(mediaDatas)
       setNextCursor(result.cursor)

@@ -58,7 +58,7 @@ export function PostCard({ post, imageHeight }: PostCardProps) {
     <div className="relative w-full h-full max-w-md mx-auto overflow-hidden rounded-xl">
       <div className="bg-white rounded-lg overflow-hidden">
           {post.uri !== "dummy" ? <>
-            <img src={post.image_url} alt={post.image_url} className={cn("object-cover", judgeSize(imageHeight))}/>
+            <img src={post.imageUrl} alt={post.imageUrl} className={cn("object-cover", judgeSize(imageHeight))}/>
             <div className="flex items-center p-3">
                 <a href={"https://bsky.app/profile/" + post.author.handle} target="_blank">
                   <UserInfo username={post.author.displayName.substring(0,14)} avatar={post.author.avatar} />
@@ -70,11 +70,11 @@ export function PostCard({ post, imageHeight }: PostCardProps) {
                   {post.likes.toLocaleString()}
               </div>
             </div>
-              <p className="text-base font-semibold ml-4 mb-4"><a href={post.post_url} target="_blank">{post.text!=="" ? cutText(post.text) : "　"}</a></p>
+              <p className="text-base font-semibold ml-4 mb-4"><a href={post.postUrl} target="_blank">{post.text!=="" ? cutText(post.text) : "　"}</a></p>
           </>
             : 
           /* ロード中（ダミーページ）のとき */
-          <img src={post.image_url} alt={post.image_url} className={cn("object-cover", judgeSize(imageHeight*1.25))}/>
+          <img src={post.imageUrl} alt={post.imageUrl} className={cn("object-cover", judgeSize(imageHeight*1.25))}/>
           }
       </div>
     </div>

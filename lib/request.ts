@@ -25,7 +25,7 @@ export async function requestTrend() {
 
 export async function requestData(query: string, actor: string | null, cursor: string, sort: string, sensitive: boolean) {
 
-    var media_data, new_cursor;
+    var mediaData, newCursor;
 
     await axios.get(API_ENDPOINT, {
         params: {
@@ -37,19 +37,21 @@ export async function requestData(query: string, actor: string | null, cursor: s
         }
         ,withCredentials: false
     }).then((response) => {
-        if (response.data.media_count > 0) {
-            media_data = response.data.media_data
-            new_cursor = response.data.cursor
+        if (response.data.mediaCount > 0) {
+            mediaData = response.data.mediaData
+            newCursor = response.data.cursor
         }
     })
     .catch((error) =>  {
         console.log(error)
     })
 
+    // console.log(mediaData)
+
     return {
-        posts: media_data || [],
-        hasMore: true,
-        cursor: new_cursor || "0",
+        posts: mediaData || [],
+        // hasMore: true,
+        cursor: newCursor || "0",
     }
 }
 

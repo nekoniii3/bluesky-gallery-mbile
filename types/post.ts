@@ -8,8 +8,8 @@ export type MediaData = {
   author: AuthorData
   date: string
   likes: number
-  post_url: string
-  image_url: string
+  postUrl: string
+  imageUrl: string
   text: string
   uri: string
 }

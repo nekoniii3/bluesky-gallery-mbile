@@ -76,8 +76,9 @@ export default function SearchScreen() {
   }, [searchParams])
 
   // 検索を実行する関数
-  const handleSearch = (searchTerm: string, showSensitive: boolean) => {
-    if (!searchTerm.trim()) return
+  const handleSearch = (searchTerm: string, selectedUser : AuthorData | null, showSensitive: boolean) => {
+    console.log(selectedUser)
+    if (!searchTerm.trim() && !selectedUser) return
 
     // 検索結果ページに遷移
     router.push(`/results?q=${encodeURIComponent(searchTerm)}&actor=${encodeURIComponent(selectedUser?.handle || "")}&sensitive=${encodeURIComponent(showSensitive)}&retry=${encodeURIComponent(isRetry)}`)
@@ -94,13 +95,13 @@ export default function SearchScreen() {
             placeholder="Blueskyの画像を検索します"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSearch(keyword, showSensitive)}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch(keyword, selectedUser, showSensitive)}
             className="bg-white border-gray-700 rounded-full pl-10 pr-4 py-6 w-full text-black"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          {keyword && (
+          {(keyword || selectedUser) && (
             <Button
-              onClick={() => handleSearch(keyword, showSensitive)}
+              onClick={() => handleSearch(keyword, selectedUser, showSensitive)}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full h-8 w-8 p-0"
             >
               <ArrowRight className="h-4 w-4" />
@@ -160,7 +161,7 @@ export default function SearchScreen() {
                 key={i}
                 variant="secondary"
                 className="rounded-full text-white bg-sky-500 hover:bg-gray-700"
-                onClick={() => handleSearch(trend, showSensitive)}
+                onClick={() => handleSearch(trend, null, showSensitive)}
               >
                 {trend}
               </Button>
@@ -205,12 +206,14 @@ export default function SearchScreen() {
       {/* 検索結果なしポップアップ */}
       <NoResultsPopup show={showNoResults} keyword={lastSearchedKeyword} />
       {/* ユーザー検索ダイアログ */}
+      <div className="">
       <UserSearchDialog
         open={userDialogOpen}
         onOpenChange={setUserDialogOpen}
         // onUserSelect={setSelectedUser}
         onSelectUser={setSelectedUser}
       />
+      </div>
     </div>
   )
 }

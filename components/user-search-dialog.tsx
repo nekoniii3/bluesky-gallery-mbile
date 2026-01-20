@@ -73,8 +73,10 @@ export function UserSearchDialog({ open, onOpenChange, onSelectUser }: UserSearc
   }
 
   return (
+    // <div className="relative w-[50%]">
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md bg-cyan-100">
+      {/* <DialogContent className="max-w-md bg-cyan-100"> */}
+      <DialogContent className="sm:max-w-md bg-cyan-100">
         <DialogHeader>
           <DialogTitle>ユーザー検索</DialogTitle>
           <DialogDescription>BlueSkyユーザー名などを入力してください</DialogDescription>
@@ -103,8 +105,8 @@ export function UserSearchDialog({ open, onOpenChange, onSelectUser }: UserSearc
               </div>
             ) : executedQuery === "" ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
-                <Search className="mb-2 h-12 w-12 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">ユーザー名を入力して検索ボタンを押してください</p>
+                {/* <Search className="mb-2 h-12 w-12 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">ユーザー名を入力して検索ボタンを押してください</p> */}
               </div>
             ) : searchAuthor.length > 0 ? (
               searchAuthor.map((user, index) => (
@@ -138,5 +140,6 @@ export function UserSearchDialog({ open, onOpenChange, onSelectUser }: UserSearc
         </div>
       </DialogContent>
     </Dialog>
+    // </div>
   )
 }
