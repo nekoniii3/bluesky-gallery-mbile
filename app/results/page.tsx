@@ -37,6 +37,8 @@ export default function ResultsPage() {
     try {
       const result = await requestData(keyword, actor, nextCursor, "latest", showSensitive)
 
+      console.log(result.posts)
+      
       // 検索結果が0件の場合は検索画面に戻る
       if (result.posts.length === 0 && pageToFetch === 1) {
         // keywordパラメータを追加して検索ワードを保持
