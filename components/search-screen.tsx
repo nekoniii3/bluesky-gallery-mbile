@@ -13,18 +13,21 @@ import { requestTrend } from "@/lib/request"
 import { UserSearchDialog } from "@/components/user-search-dialog"
 import type { AuthorData } from "@/types/post"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useSearchInfo } from "@/context/search-info-context"
 
 export default function SearchScreen() {
-  const [keyword, setKeyword] = useState("")
+  // const [keyword, setKeyword] = useState("")
   const [showNoResults, setShowNoResults] = useState(false)
-  const [lastSearchedKeyword, setLastSearchedKeyword] = useState("")
+  // const [lastSearchedKeyword, setLastSearchedKeyword] = useState("")
   const router = useRouter()
   const searchParams = useSearchParams()
   const [showSensitive, setShowSensitive] = useState(true)
   const [trendList, setTrendList] = useState<string[]>([])
   const [isRetry, setIsRetry] = useState(false)
   const [userDialogOpen, setUserDialogOpen] = useState(false)
-  const [selectedUser, setSelectedUser] = useState<AuthorData| null>(null)
+  // const [selectedUser0, setSelectedUser] = useState<AuthorData| null>(null)
+  const { keyword, setKeyword, selectedUser, setSelectedUser } = useSearchInfo()
+
   
   const getTrend = async() => {
 
@@ -46,25 +49,21 @@ export default function SearchScreen() {
   useEffect(() => {
 
     const noResults = searchParams.get("noResults") === "true"
-    const searchKeyword = searchParams.get("keyword") || ""
+    // const searchKeyword = searchParams.get("keyword") || ""
     const retry = searchParams.get("retry") === "true"
     const url = new URL(window.location.href)
 
-    if (noResults && searchKeyword) {
+    if (noResults) {
       setShowNoResults(true)
-      setLastSearchedKeyword(searchKeyword)
 
       // 検索ワードを検索ボックスに設定
-      setKeyword(searchKeyword)
+      // setKeyword(searchKeyword)
 
       // URLからnoResultsパラメータを削除（ブラウザの履歴は変更せず）
-      // keywordパラメータは残しておく
       url.searchParams.delete("noResults")
-    } else if (searchParams.get("keyword")) {
-      // 検索結果がなくても、keywordパラメータがある場合は検索ボックスに設定
-      setKeyword(searchParams.get("keyword") || "")
-      
-    }
+    } 
+
+    // setKeyword(searchParams.get("keyword") || "")
 
     if (retry) {
       // 再度実行か判定しURLパラメータから消す
@@ -76,7 +75,7 @@ export default function SearchScreen() {
   }, [searchParams])
 
   // 検索を実行する関数
-  const handleSearch = (searchTerm: string, selectedUser : AuthorData | null, showSensitive: boolean) => {
+  const handleSearch = (searchTerm: string, selectedUser1 : AuthorData | null, showSensitive: boolean) => {
     console.log(selectedUser)
     if (!searchTerm.trim() && !selectedUser) return
 
@@ -204,7 +203,7 @@ export default function SearchScreen() {
         </a>
       </div>
       {/* 検索結果なしポップアップ */}
-      <NoResultsPopup show={showNoResults} keyword={lastSearchedKeyword} />
+      <NoResultsPopup show={showNoResults}/>
       {/* ユーザー検索ダイアログ */}
       <div className="">
       <UserSearchDialog

@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Search, User } from "lucide-react"
 import type { AuthorData } from "@/types/post"
 import { requestActor } from "@/lib/request"
+import { useSearchInfo } from "@/context/search-info-context"
 
 interface UserSearchDialogProps {
   open: boolean
@@ -24,11 +25,12 @@ const SAMPLE_USERS = [
   { id: "5", handle: "artist_epsilon", displayName: "Epsilon Artist", avatar: "/user-avatar-5.png" },
 ]
 
-export function UserSearchDialog({ open, onOpenChange, onSelectUser }: UserSearchDialogProps) {
+export function UserSearchDialog({ open, onOpenChange }: UserSearchDialogProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [executedQuery, setExecutedQuery] = useState("")
   const [isSearching, setIsSearching] = useState(false)
   const [searchAuthor, setSearchAuthor] = useState<AuthorData[]>([])
+  const { setSelectedUser } = useSearchInfo()
 
   // const filteredUsers = SAMPLE_USERS.filter(
   //   (user) =>
@@ -64,12 +66,19 @@ export function UserSearchDialog({ open, onOpenChange, onSelectUser }: UserSearc
     }, 500)
   }
 
+  // const handleSelectUser = (actor: AuthorData) => {
+  //   onSelectUser(actor)
+  //   setSearchQuery("")
+  //   setExecutedQuery("")
+  //   onOpenChange(false)
+  //   setSearchAuthor([])
+  // }
+
   const handleSelectUser = (actor: AuthorData) => {
-    onSelectUser(actor)
+    setSelectedUser(actor)
+    onOpenChange(false)
     setSearchQuery("")
     setExecutedQuery("")
-    onOpenChange(false)
-    setSearchAuthor([])
   }
 
   return (
@@ -86,7 +95,7 @@ export function UserSearchDialog({ open, onOpenChange, onSelectUser }: UserSearc
           <div className="flex gap-2">
             <Input
               type="text"
-              placeholder="ユーザー名を入力..."
+              placeholder="情報を入力..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
@@ -112,6 +121,7 @@ export function UserSearchDialog({ open, onOpenChange, onSelectUser }: UserSearc
               searchAuthor.map((user, index) => (
                 <button
                   key={index}
+                  // onClick={() => handleSelectUser(user)}
                   onClick={() => handleSelectUser(user)}
                   className="flex w-19/20 items-center gap-3 rounded-lg border border-border bg-cyan-50 bg-card p-3 transition-colors hover:bg-accent"
                 >                

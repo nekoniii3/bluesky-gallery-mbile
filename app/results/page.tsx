@@ -41,8 +41,7 @@ export default function ResultsPage() {
       
       // 検索結果が0件の場合は検索画面に戻る
       if (result.posts.length === 0 && pageToFetch === 1) {
-        // keywordパラメータを追加して検索ワードを保持
-        router.push(`/?noResults=true&keyword=${encodeURIComponent(keyword)}`)
+        router.push(`/?noResults=true`)
         return
       }
 

@@ -3,6 +3,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ScreenSizeProvider } from "@/context/screen-size-context"
+import { SearchInfoProvider } from "@/context/search-info-context"
 import { Suspense } from 'react'
 
 const inter = Inter({ subsets: ["latin"] })
@@ -22,7 +23,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Suspense>
         <ScreenSizeProvider>
-          {children}
+          <SearchInfoProvider>
+            {children}
+          </SearchInfoProvider>
         </ScreenSizeProvider>
         </Suspense>
       </body>

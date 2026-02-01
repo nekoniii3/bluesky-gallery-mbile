@@ -8,7 +8,7 @@ interface NoResultsPopupProps {
   keyword?: string
 }
 
-export function NoResultsPopup({ show, keyword }: NoResultsPopupProps) {
+export function NoResultsPopup({ show }: NoResultsPopupProps) {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function NoResultsPopup({ show, keyword }: NoResultsPopupProps) {
       // 5秒後に非表示にする
       const timer = setTimeout(() => {
         setVisible(false)
-      }, 5000)
+      }, 7000)
 
       return () => clearTimeout(timer)
     }
@@ -30,7 +30,7 @@ export function NoResultsPopup({ show, keyword }: NoResultsPopupProps) {
     <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-50 animate-fade-in-up">
       <div className="bg-black/80 text-white px-4 py-3 rounded-lg text-sm font-medium shadow-lg flex items-center space-x-2">
         <AlertCircle className="w-4 h-4 text-red-400" />
-        <p>{keyword ? `「${keyword}」で` : ""}メディアデータがありませんでした</p>
+        <p>指定の検索条件でメディアデータがありませんでした</p>
       </div>
     </div>
   )
