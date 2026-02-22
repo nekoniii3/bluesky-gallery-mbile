@@ -27,7 +27,6 @@ export function UserSearchDialog({ open, onOpenChange }: UserSearchDialogProps) 
   const handleSearch = async () => {
 
     if (searchQuery.trim() === "") return
-
     setIsSearching(true)
     setExecutedQuery(searchQuery)
 
@@ -46,6 +45,7 @@ export function UserSearchDialog({ open, onOpenChange }: UserSearchDialogProps) 
       // 検索結果が0件の場合はメッセージを表示
       if (result.actors.length === 0) {
         setIsSearching(false)
+        setSearchAuthor([])
         return
       }
 
@@ -54,6 +54,7 @@ export function UserSearchDialog({ open, onOpenChange }: UserSearchDialogProps) 
     } catch (error) {
       console.error("ユーザーの取得に失敗しました", error)
     } finally {
+      setIsSearching(false)
     }
   }
 
@@ -66,7 +67,7 @@ export function UserSearchDialog({ open, onOpenChange }: UserSearchDialogProps) 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md bg-cyan-100 text-sky-600">
+      <DialogContent className="sm:max-w-md bg-cyan-100 text-sky-500">
         <DialogHeader>
           <DialogTitle>ユーザー検索</DialogTitle>
           <DialogDescription>BlueSkyユーザー名などを入力してください</DialogDescription>
