@@ -46,8 +46,6 @@ export async function requestData(query: string, actor: string | null, cursor: s
         console.log(error)
     })
 
-    // console.log(mediaData)
-
     return {
         posts: mediaData || [],
         // hasMore: true,
@@ -57,24 +55,27 @@ export async function requestData(query: string, actor: string | null, cursor: s
 
 export async function requestActor(query: string) {
 
-    var actorData
+    var status, actorData
 
     await axios.get(ACTOR_ENDPOINT, {
         params: {
         q: query,
         }
+        // ,timeout: 1500
         ,withCredentials: false
     }).then((response) => {
         if (response.data.actorData.length > 0) {
             actorData = response.data.actorData
-            // console.log(actorData)
         }
+        status = 200
     })
     .catch((error) =>  {
         console.log(error)
+        status = 400
     })
 
     return {
+        status: status,
         actors: actorData || [],
     }
 }
