@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -23,6 +23,13 @@ export function UserSearchDialog({ open, onOpenChange }: UserSearchDialogProps) 
   const [isSearceSuccess, setIsSearceSuccess] = useState(false)
   const [searchAuthor, setSearchAuthor] = useState<AuthorData[]>([])
   const { setSelectedUser } = useSearchInfo()
+
+  // 初回データ取得
+  useEffect(() => {
+      console.log("useEffect")
+      setSearchQuery("")
+      setExecutedQuery("")
+  }, [open])
 
   const handleSearch = async () => {
 
@@ -60,9 +67,9 @@ export function UserSearchDialog({ open, onOpenChange }: UserSearchDialogProps) 
 
   const handleSelectUser = (actor: AuthorData) => {
     setSelectedUser(actor)
-    onOpenChange(false)
     setSearchQuery("")
     setExecutedQuery("")
+    onOpenChange(false)
   }
 
   return (
@@ -81,7 +88,7 @@ export function UserSearchDialog({ open, onOpenChange }: UserSearchDialogProps) 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              className="flex-1 border-blue-500 focus:border-blue-700"
+              className="flex-1 border-blue-500 focus:border-blue-700 text-black"
             />
             <Button onClick={handleSearch} disabled={isSearching} size="icon" className="bg-sky-400">
               <Search className="h-4 w-4" />
